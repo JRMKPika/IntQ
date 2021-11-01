@@ -1,0 +1,19 @@
+{
+  "name": "intq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JRMKPika/IntQ.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JRMKPika/IntQ/issues"
+  },
+  "homepage": "https://github.com/JRMKPika/IntQ#readme"
+}
