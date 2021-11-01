@@ -1,13 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const path = require('path');
 
 console.log(`Launching in ${process.env.NODE_ENV} mode`);
 
 module.exports = {
-
-  entry: './src/index.jsx',
+  entry: './client/index.js',
   mode: process.env.NODE_ENV,
 
   output: {
@@ -17,7 +15,7 @@ module.exports = {
 
   devServer: {
     static: {
-      directory: path.join(__dirname, 'public'),
+      directory: path.join(__dirname, 'client'),
     },
     compress: true,
     port: 8080,
@@ -33,10 +31,9 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'public', 'index.html'),
+      template: path.join(__dirname, 'client', 'index.html'),
     }),
     new MiniCssExtractPlugin(),
-    // new BundleAnalyzerPlugin(),
   ],
 
   module: {
@@ -48,7 +45,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/env', '@babel/preset-react'],
-            plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
+            plugins: [
+              '@babel/plugin-transform-runtime',
+              '@babel/transform-async-to-generator',
+            ],
           },
         },
       },
@@ -68,6 +68,46 @@ module.exports = {
         use: ['file-loader'],
       },
     ],
-
   },
 };
+// const path = require('path');
+
+// module.exports = {
+//   mode: 'development',
+//   entry: {
+//     index: './client/index.js',
+//   },
+//   output : {
+//     path: path.resolve(__dirname, 'build'),
+//     filename : "bundle.js",
+//     publicPath: '/build',
+//   },
+//   module : {
+//     rules : [
+//         {
+//             test : /\.jsx?/,
+//             exclude : /node_modules/,
+//             use : {
+//                 loader: "babel-loader",
+//                 options : {
+//                     presets : ["@babel/preset-env", "@babel/preset-react"],
+//                 }
+//             }
+//         },
+//         {
+//             test: /\.css$/i,
+//             use: ["style-loader", "css-loader"],
+//         }
+//     ]
+//   },
+//   devServer: {
+//     static: {
+//       directory: path.join(__dirname, '/client'),
+//     },
+//     compress: true,
+//     port: 8080,
+//     proxy: {
+//       '/api': 'http://localhost:3000',
+//     },
+//   },
+// };
