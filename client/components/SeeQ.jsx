@@ -1,14 +1,12 @@
 import React from 'react';
+import Card from './Card.jsx'
 
 function SeeQ() {
   return (
-    <Router>
-      <div>
-        <Link to='/myQuestions'>
-          <button>Click Me!</button>
-        </Link>
-      </div>
-    </Router>
-  );
+    <div>
+      {this.state.data.map(d => (<Card data={d}/>))}
+    </div>
+  )
+
 }
 export default SeeQ;

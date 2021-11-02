@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-function MyQuestions() {
+function Questions() {
 
   return <div>My quyestions </div>;
 }
 
-export default MyQuestions;
+export default Questions;
