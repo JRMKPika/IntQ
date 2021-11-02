@@ -14,7 +14,15 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function LoggedInContainer() {
   // const { username } = props;
   const [selected, setSelected] = useState('home');
-  let data = '';
+  const [data, setData] = useState('');
+  // let data = '';
+ 
+  function getData (link) {
+    // GET request using fetch inside useEffect React hook
+    fetch(link)
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  };
 
 
   return (
@@ -35,14 +43,17 @@ function LoggedInContainer() {
               </span>
             </Link>
             <Link to='/SeeQ'>
-              <span>
+              <span onClick={getData('/allQ')}>
                 <FontAwesomeIcon id='seeIcon' icon={faListAlt} />
               </span>
             </Link>
           </div>
           <Switch>
             <Route path='/SeeQ'>
-              <SeeQ title={'Questions'} data={data} />
+              <SeeQ title='All Questions' data={data} />
+            </Route>
+            <Route path='/myQuestions'>
+              <SeeQ title='My Questions' data={data} />
             </Route>
             <Route path='/AddQ'>
               <AddQ />
