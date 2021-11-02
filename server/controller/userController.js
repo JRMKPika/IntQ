@@ -18,7 +18,8 @@ userController.signIn = async (req, res, next) => {
             console.log("data from db after select method: ", data);
             if(data.rowCount ==1 ){
                 console.log(`The user ${name} exists in the sql database`)
-                res.locals.addedUser = data.rowCount;
+                res.locals.addedUser = googleId;
+                console.log("Google id is ", res.locals.addedUser);
                 return next();
                 // console.log('FROM THE IF : res.locals.addedUser: ',res.locals.addedUser)
                 }
