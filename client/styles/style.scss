@@ -37,7 +37,7 @@ body {
 
     #AddOrSee {
       position: absolute;
-      top: 10vh;
+      top: 15vh;
       right: 10vh;
       background-color: $greyColor;
       border-radius: 2vh;
@@ -104,19 +104,25 @@ body {
         height: 7vh;
         width: 20vh;
         font-family: $generalFont;
+        cursor: pointer;
       }
     }
   }
   .searchBarWrapper {
     position: absolute;
-    top: 2vh;
-    left: 2vh;
+    top: 5vh;
+    left: 5vh;
+    input {
+      border-radius: 2vh;
+    }
   }
 
   .userOptionsWrapper {
     position: absolute;
-    top: 2vh;
-    right: 2vh;
+    top: 5vh;
+    right: 5vh;
+    font-size: 2vh;
+    cursor: pointer;
   }
   .card {
     background-color: $centerColor;
