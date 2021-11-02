@@ -30,7 +30,7 @@ function Homepage() {
     <div>
       <h1>Latest Questions!</h1>
       {topTen.data.map((d, index) => (
-        <Card key={d.id} data={d} delete={true} />
+        <Card key={d.id} data={d} delete={true} /> 
       ))}
     </div>
   );
