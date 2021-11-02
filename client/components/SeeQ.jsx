@@ -1,10 +1,13 @@
 import React from 'react';
 import Card from './Card.jsx'
+import Questions from './Questions.jsx'
 
-function SeeQ() {
+function SeeQ(props) {
+  const { title, data } = props;
   return (
     <div>
-      {/* {this.state.data.map(d => (<Card data={d}/>))} */}
+      <h1> {title}</h1>
+      <Questions data = {data}/>
     </div>
   )
 
