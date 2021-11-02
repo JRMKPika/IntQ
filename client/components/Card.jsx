@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 
 function Card() {
   return (
-    <div>Card</div>
+  <div classname='card'>
+    Card
+  </div>
   )
-  
 }
 
 export default Card;
