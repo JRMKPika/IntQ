@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=Lilita+One&family=Luckiest+Guy&family=Merriweather+Sans:wght@700&family=Monoton&family=Rampart+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Knewave&family=Lilita+One&family=Luckiest+Guy&family=Merriweather+Sans:wght@700&family=Monoton&family=Rampart+One&display=swap');
+body {
+  background-color: rgb(255, 255, 255);
+  #logo {
+    font-family: Cabin Sketch;
+    font-size: 10vh;
+    color: rgb(62, 58, 55);
+  }
+  .loginWrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .loginSquare {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgb(211, 212, 220);
+      width: 100vh;
+      height: 80vh;
+      text-align: center;
+      border: none;
+      border-radius: 2vh;
+    }
+  }
+  .loggedInContainerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

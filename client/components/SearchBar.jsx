@@ -1,6 +1,10 @@
 import React from 'react';
 
 function SearchBar() {
-  return <h1>hello2</h1>;
+  return (
+    <div>
+      <input placeholder='search'></input>
+    </div>
+  );
 }
 export default SearchBar;
