@@ -15,6 +15,8 @@ function LoggedInContainer() {
   // const { username } = props;
   const [selected, setSelected] = useState('home');
   let data = '';
+
+
   return (
     <div className='loggedInContainerWrapper'>
       <SearchBar />
