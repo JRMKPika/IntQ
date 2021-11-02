@@ -9,6 +9,7 @@ function AddQ(props) {
     const company = document.querySelector('#company').value;
     const questionTypes = document.querySelector('#questionTypes').value;
     const role = document.querySelector('#role').value;
+    console.log(user.googleId, 'and', user.username);
 
     fetch(`/addQuestion`, {
       method: 'POST',
