@@ -25,7 +25,7 @@ function LoggedInContainer() {
       <Router>
         <div>
           <Link to='/'>
-            <span id='logo'>IntQ</span>
+            <button id='logo'>IntQ</button>
           </Link>
 
           <div id='AddOrSee'>
