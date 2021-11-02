@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar.jsx';
+import Questions from '../components/Questions.jsx';
+import Login from '../components/Login.jsx';
 import Homepage from '../components/Homepage.jsx';
 import UserOptions from '../components/UserOptions.jsx';
 import SeeQ from '../components/SeeQ.jsx';
