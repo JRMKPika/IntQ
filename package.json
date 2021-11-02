@@ -2,7 +2,7 @@
   "name": "intq",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./client/index.js",
   "scripts": {
     "test": "supertest --verbose",
     "start": "nodemon server/server.js",
