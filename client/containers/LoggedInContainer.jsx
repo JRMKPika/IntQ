@@ -11,11 +11,10 @@ import { faPlus, faListAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-function LoggedInContainer() {
-  // const { username } = props;
+function LoggedInContainer(props) {
+  const { user } = props;
   const [selected, setSelected] = useState('home');
   const [data, setData] = useState('');
-  // let data = '';
  
   function getData (link) {
     // GET request using fetch inside useEffect React hook
@@ -28,7 +27,7 @@ function LoggedInContainer() {
   return (
     <div className='loggedInContainerWrapper'>
       <SearchBar />
-      <UserOptions username={'username'} />
+      <UserOptions username={user.name} />
 
       <Router>
         <div>
@@ -56,7 +55,7 @@ function LoggedInContainer() {
               <SeeQ title='My Questions' data={data} />
             </Route>
             <Route path='/AddQ'>
-              <AddQ />
+              <AddQ user={user}/>
             </Route>
             <Route path='/'>
               <Homepage />

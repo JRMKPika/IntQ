@@ -1,7 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-function AddQ() {
+function AddQ(props) {
+  const { user } = props;
   const history = useHistory();
   function addQuestion() {
     const question = document.querySelector('#question').value;
@@ -12,7 +13,14 @@ function AddQ() {
     fetch(`/addQuestion`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question, company, questionTypes, rol }),
+      body: JSON.stringify({
+        question,
+        company,
+        questionTypes,
+        rol,
+        googleId: user.googleId,
+        username: user.name,
+      }),
     }).catch((err) => console.log('Error while adding question: ', err));
   }
   async function AddAndContinue() {
