@@ -23,12 +23,9 @@ const Login = (props) => {
         })
         .then((res) => res.json())
         .then((data) => {
-            if(data ==1){
+            console.log("The google ID is ", data);
             setLoggedIn(true);
-            }
-            else
-            throw "User was neither added nor found in the DB. Check the logs";
-        })
+            })
         .catch( (err) => console.log("An error was found while singing in via google : ", err))
       };
 
