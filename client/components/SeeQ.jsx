@@ -4,7 +4,7 @@ import Card from './Card.jsx'
 function SeeQ() {
   return (
     <div>
-      {this.state.data.map(d => (<Card data={d}/>))}
+      {/* {this.state.data.map(d => (<Card data={d}/>))} */}
     </div>
   )
 
