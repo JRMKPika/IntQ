@@ -48,10 +48,10 @@ userController.signIn = async (req, res, next) => {
       };
 }
 
-userController.AddQuestion = async (req, res, next) => {
-    console.log(req.body);
-    const { question, company, questionTypes, rol} = req.body;
-    console.log("The sessionId is ", sessionId)
-}
+// userController.AddQuestion = async (req, res, next) => {
+//     console.log("the req body is ",req.body);
+//     const { question, company, questionTypes, rol} = req.body;
+//     console.log("The sessionId is ", sessionId)
+// }
 
 module.exports = userController;
