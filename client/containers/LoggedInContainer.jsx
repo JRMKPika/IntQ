@@ -4,6 +4,8 @@ import Homepage from '../components/Homepage.jsx';
 import UserOptions from '../components/UserOptions.jsx';
 import SeeQ from '../components/SeeQ.jsx';
 import AddQ from '../components/AddQ.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus,faListAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -12,20 +14,24 @@ function LoggedInContainer() {
   const [selected, setSelected] = useState('home');
   let data = '';
   return (
-    <div>
+    <div className='loggedInContainerWrapper' >
       <SearchBar />
       <UserOptions username={'username'} />
 
       <Router>
         <div>
           <Link to='/'>
-            <button>LOGO</button>
+            <span id='logo'>IntQ</span>
           </Link>
           <Link to='/AddQ'>
-            <button>Add Question</button>
+            <span>
+              <FontAwesomeIcon id={'plusIcon'} icon={faPlus} />
+            </span>
           </Link>
           <Link to='/SeeQ'>
-            <button>See Questions</button>
+          <span>
+              <FontAwesomeIcon id={'plusIcon'} icon={faListAlt} />
+            </span>
           </Link>
 
           <Switch>
