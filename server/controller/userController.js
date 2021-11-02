@@ -1,4 +1,5 @@
 const db = require('../model/userModel.js');
+let sessionId;
 
 // import pool from "../model/userModels.js";
 
@@ -29,6 +30,7 @@ userController.signIn = async (req, res, next) => {
                 .then(data => {
                 console.log("User added to the SQL Database. Row count:  ", data.rowCount);
                 res.locals.addedUser = data.rowCount;
+                sessionId = googleId; //check
                 return next();
                 // console.log('FROM THE ELSE: res.locals.addedUser: ',res.locals.addedUser)
                 })
@@ -44,6 +46,12 @@ userController.signIn = async (req, res, next) => {
         };
         next(defaultErr);
       };
+}
+
+userController.AddQuestion = async (req, res, next) => {
+    console.log(req.body);
+    const { question, company, questionTypes, rol} = req.body;
+    console.log("The sessionId is ", sessionId)
 }
 
 module.exports = userController;
