@@ -104,6 +104,7 @@ body {
         height: 7vh;
         width: 20vh;
         font-family: $generalFont;
+        cursor: pointer;
       }
     }
   }
@@ -121,5 +122,6 @@ body {
     top: 5vh;
     right: 5vh;
     font-size: 2vh;
+    cursor: pointer;
   }
 }
