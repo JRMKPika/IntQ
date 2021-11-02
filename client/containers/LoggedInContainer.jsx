@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar.jsx';
 import Questions from '../components/Questions.jsx';
+import Login from '../components/Login.jsx';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
