@@ -7,6 +7,8 @@ body {
     font-family: $fontOfLogo;
     font-size: 10vh;
     color: $greyLogoColor;
+    background-color: transparent;
+    border: none;
   }
   .loginWrapper {
     height: 100vh;
@@ -27,6 +29,7 @@ body {
     }
   }
   .loggedInContainerWrapper {
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,6 +131,6 @@ body {
     background-color: $centerColor;
     border-radius: 2vh;
     padding: 2vh;
-
+    width: 50vh;
   }
 }

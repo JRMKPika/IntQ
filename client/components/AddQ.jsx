@@ -1,18 +1,26 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-function AddQ() {
+function AddQ(props) {
+  const { user } = props;
   const history = useHistory();
   function addQuestion() {
     const question = document.querySelector('#question').value;
     const company = document.querySelector('#company').value;
     const questionTypes = document.querySelector('#questionTypes').value;
-    const rol = document.querySelector('#rol').value;
+    const role = document.querySelector('#role').value;
 
     fetch(`/addQuestion`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question, company, questionTypes, rol }),
+      body: JSON.stringify({
+        question,
+        company,
+        questionTypes,
+        role,
+        googleId: user.googleId,
+        username: user.name,
+      }),
     }).catch((err) => console.log('Error while adding question: ', err));
   }
   async function AddAndContinue() {
@@ -20,7 +28,7 @@ function AddQ() {
     document.querySelector('#question').value = '';
     document.querySelector('#company').value = '';
     document.querySelector('#questionTypes').value = '';
-    document.querySelector('#rol').value = '';
+    document.querySelector('#role').value = '';
     window.alert('Your question was succesfully added.');
   }
 
@@ -49,7 +57,7 @@ function AddQ() {
           </select>
           <label>Rol: </label>
           <input
-            id='rol'
+            id='role'
             placeholder='i.e. Front End Senior Software Engineer'
           ></input>
         </div>
