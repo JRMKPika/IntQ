@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Knewave&family=Lilita+One&family=Luckiest+Guy&family=Merriweather+Sans:wght@700&family=Monoton&family=Rampart+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Knewave&family=Lilita+One&family=Luckiest+Guy&family=Merriweather+Sans:wght@700&family=Monoton&family=Rampart+One&display=swap');
+@import 'colorsandfonts.scss';
+
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: $backgroundColor;
+  color: $greyColor;
   #logo {
-    font-family: Cabin Sketch;
+    font-family: $fontOfLogo;
     font-size: 10vh;
-    color: rgb(62, 58, 55);
+    color: $greyLogoColor;
   }
   .loginWrapper {
     height: 100vh;
@@ -17,7 +18,7 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: rgb(211, 212, 220);
+      background-color: $centerColor;
       width: 100vh;
       height: 80vh;
       text-align: center;
@@ -30,5 +31,91 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: $greyColor;
+    // font-family: Encode Sans Semi Expanded;
+    font-family: $generalFont;
+
+    #AddOrSee {
+      position: absolute;
+      top: 10vh;
+      right: 10vh;
+      background-color: $greyColor;
+      border-radius: 2vh;
+      width: 10vh;
+      height: 10vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1vh;
+    }
+    #plusIcon {
+      font-size: 3vh;
+      color: $backgroundColor;
+    }
+    #seeIcon {
+      font-size: 3vh;
+      color: $backgroundColor;
+    }
+  }
+  .addQWrapper {
+    padding: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(211, 212, 220);
+    width: 100vh;
+    height: 80vh;
+    text-align: center;
+    border: none;
+    border-radius: 2vh;
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+      margin-top: 5vh;
+      input {
+        background-color: $backgroundColor;
+        border: none;
+        width: 30vh;
+        border-radius: 2vh;
+        padding: 1vh;
+        margin-bottom: 1vh;
+      }
+      #questionTypes {
+        background-color: $backgroundColor;
+        border: none;
+        width: 33vh;
+        border-radius: 2vh;
+        padding: 1vh;
+        margin-bottom: 1vh;
+        color: rgb(132, 132, 132);
+      }
+    }
+    .submitButtons {
+      margin-top: 7vh;
+      display: flex;
+      gap: 7vh;
+      button {
+        background-color: $greyColor;
+        color: $backgroundColor;
+        border: none;
+        border-radius: 5vh;
+        height: 7vh;
+        width: 20vh;
+        font-family: $generalFont;
+      }
+    }
+  }
+  .searchBarWrapper {
+    position: absolute;
+    top: 2vh;
+    left: 2vh;
+  }
+
+  .userOptionsWrapper {
+    position: absolute;
+    top: 2vh;
+    right: 2vh;
   }
 }
