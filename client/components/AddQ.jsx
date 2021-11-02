@@ -8,7 +8,7 @@ function AddQ(props) {
     const question = document.querySelector('#question').value;
     const company = document.querySelector('#company').value;
     const questionTypes = document.querySelector('#questionTypes').value;
-    const rol = document.querySelector('#rol').value;
+    const role = document.querySelector('#role').value;
 
     fetch(`/addQuestion`, {
       method: 'POST',
@@ -17,7 +17,7 @@ function AddQ(props) {
         question,
         company,
         questionTypes,
-        rol,
+        role,
         googleId: user.googleId,
         username: user.name,
       }),
@@ -28,7 +28,7 @@ function AddQ(props) {
     document.querySelector('#question').value = '';
     document.querySelector('#company').value = '';
     document.querySelector('#questionTypes').value = '';
-    document.querySelector('#rol').value = '';
+    document.querySelector('#role').value = '';
     window.alert('Your question was succesfully added.');
   }
 
@@ -57,7 +57,7 @@ function AddQ(props) {
           </select>
           <label>Rol: </label>
           <input
-            id='rol'
+            id='role'
             placeholder='i.e. Front End Senior Software Engineer'
           ></input>
         </div>
