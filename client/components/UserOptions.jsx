@@ -1,6 +1,10 @@
 import React from 'react';
 
 function UserOptions() {
-  return <h1>Username</h1>
+  return (
+<div className='userOptionsWrapper'>
+<h1>Username</h1>
+</div>
+  )
 }
 export default UserOptions;

@@ -6,7 +6,8 @@ import Card from './Card.jsx';
 function Homepage() {
   return (
     <div>
-      {this.state.data.map(d => (<Card data={d}/>))}
+      Something in the
+      {/* {this.state.data.map(d => (<Card data={d}/>))} */}
     </div>
   )
   
