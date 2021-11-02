@@ -4,6 +4,7 @@ const app = express();
 const PORT = 3000;
 
 const userController = require('./controller/userController.js')
+const routes = require('./routes')
 
 
 app.use(express.urlencoded({extended: true}));
@@ -23,6 +24,10 @@ userController.signIn,
 app.get('/', (req,res)=> {
   return res.status(200).sendFile(path.join(__dirname, "../client/index.html"));
 });
+
+// app.use('/newestTen', routes);
+// app.use('/allQ', routes);
+app.use('/', routes);
 
 app.use((err, req, res, next) => {
   const defaultErr = {

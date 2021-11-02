@@ -46,4 +46,46 @@ userController.signIn = async (req, res, next) => {
       };
 }
 
+//newest ten
+//all questions
+//('/allQ')
+//('/myQ')
+//myQuestions
+//searchByCompany, searchByQuestionType, searchByRole
+//
+
+//Grab 10 most recent questions
+userController.newestTen = async (req, res, next) => {
+    try {
+        const newestTen = await db.query("SELECT * FROM questions ORDER BY date DESC LIMIT 10")
+        res.locals.newestTen = newestTen.rows;
+        return next()        
+    }
+    catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside homePage',
+            status: 500,
+            message: {err: 'An error occured'}
+        };
+        next(defaultErr)
+    }
+}
+
+//Grab all questions from entire database
+userController.allQ = async (req, res, next) => {
+    try {
+        const allQ = await db.query("SELECT * FROM questions")
+        res.locals.allQ = allQ.rows;
+        return next()        
+    }
+    catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside homePage',
+            status: 500,
+            message: {err: 'An error occured'}
+        };
+        next(defaultErr)
+    }
+}
+
 module.exports = userController;
