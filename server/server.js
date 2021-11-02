@@ -15,9 +15,9 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 
 app.use("/build", express.static(path.join(__dirname, "../build")));
 
-// app.post('/addQuestion',
-//  userController.AddQuestion,
-//   (req,res) => {});
+app.post('/addQuestion',
+ userController.AddQuestion,
+  (req,res) => {});
 
 app.post(`/loginUser`,
 userController.signIn,

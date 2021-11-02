@@ -22,7 +22,7 @@ const Login = (props) => {
       .then((res) => res.json())
       .then((data) => {
         console.log('The google ID is ', data);
-        setUser(name, googleId);
+        setUser({name, googleId});
         setLoggedIn(true);
       })
       .catch((err) =>
