@@ -1,7 +1,7 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
 const app = express();
-const PORT = 3000; 
+const PORT = 3000;
 
 const userController = require('./controller/userController.js')
 
@@ -10,6 +10,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(express.json());
 
+app.use('/build', express.static(path.join(__dirname, '../build')));
 
 app.use("/build", express.static(path.join(__dirname, "../build")));
 

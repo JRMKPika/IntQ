@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  { useState } from 'react';
 import {GoogleLogin} from 'react-google-login';
 
 
@@ -33,15 +33,17 @@ const Login = (props) => {
       };
 
 return (
-            <div>
+            <div className='loginWrapper'>
+                <div className='loginSquare'>
+                <h1 id='logo'>IntQ</h1>
            <GoogleLogin
             clientId='32052476761-bgrijnll26kdtoi1mt522414bbe1f70r.apps.googleusercontent.com'
-            buttonText='Login with Google'
+            buttonText='Login'
             onSuccess={LoginWithGoogle}
             onFailure={LoginWithGoogle}
             cookiePolicy={'single_host_origin'}
             />
-            <div>hello im from googlelogin</div>
+            </div>
             </div>
     )
 }
