@@ -23,12 +23,12 @@ function SearchBar() {
   }
   return (
     <div className='searchBarWrapper'>
-      <input id='searchText' placeholder='search'></input>
       <select className='searchOptions' id='searchOption'>
             <option value='company'>Company</option>
             <option value='type'>Question Type</option>
             <option value='role'>Role</option>
           </select>
+      <input id='searchText' placeholder='Search'></input>
       <button onClick={enterSearch}>Search</button>
     </div>
   );

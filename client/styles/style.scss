@@ -54,15 +54,15 @@ body {
     font-family: $generalFont;
     .homepage {
       width: 100vh;
-      display:flex;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      .homepageQ{
+      .homepageQ {
         margin-top: 5vh;
         display: grid;
-        gap:2vh;
-        grid-template-columns: repeat(3,1fr);
+        gap: 2vh;
+        grid-template-columns: repeat(3, 1fr);
       }
     }
     .logoWithOptions {
@@ -78,14 +78,14 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1vh;
+        gap: 2vh;
       }
       #plusIcon {
-        font-size: 3vh;
+        font-size: 4vh;
         color: $green;
       }
       #seeIcon {
-        font-size: 3vh;
+        font-size: 4vh;
         color: $green;
       }
     }
@@ -143,9 +143,11 @@ body {
           border-radius: 2vh;
           padding: 1vh;
           margin-bottom: 1vh;
+          font-family: $generalFont;
         }
         ::placeholder {
           color: $backgroundColor;
+          font-family: $generalFont;
         }
         #questionTypes {
           background-color: $lilac;
@@ -155,6 +157,7 @@ body {
           padding: 1vh;
           margin-bottom: 1vh;
           color: $backgroundColor;
+          font-family: $generalFont;
         }
       }
       .submitButtons {
@@ -177,16 +180,44 @@ body {
       position: absolute;
       top: 5vh;
       left: 5vh;
+      display: flex;
+      gap: 1vh;
+      justify-content: center;
+      align-items: center;
+
       input {
         border-radius: 2vh;
+        border: 1px solid $lilac;
+        color: $greyColor;
+        font-family: $generalFont;
       }
-      display: flex;
-      gap:1vh;
+      ::placeholder {
+        color: $greyColor;
+        font-family: $generalFont;
+      }
+
+      button {
+        font-family: $generalFont;
+        width: 10vh;
+        height: 4vh;
+        text-align: center;
+        border: none;
+        border-radius: 2vh;
+        background-color: $green;
+        color: $backgroundColor;
+        cursor: pointer;
+      }
+      .searchOptions {
+        border: 1px solid $lilac;
+        color: $greyColor;
+        font-family: $generalFont;
+        width: 14vh;
+      }
     }
 
     .userOptionsWrapper {
       position: absolute;
-      top: 5vh;
+      top: 3vh;
       right: 5vh;
       display: flex;
       gap: 1vh;
@@ -196,7 +227,7 @@ body {
       #arrowDown {
         font-size: 1.5vh;
       }
-      h2{
+      h2 {
         font-size: 2vh;
       }
     }
