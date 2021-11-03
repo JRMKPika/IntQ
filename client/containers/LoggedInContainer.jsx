@@ -17,7 +17,6 @@ function LoggedInContainer(props) {
   const [data, setData] = useState('');
   const [dropdown, setDropdown] = useState(false);
   const [searchReq, setSearchReq] = useState([]);
-  console.log('this is user', user)
   function getData(link) {
     // GET request using fetch inside useEffect React hook
     fetch(link)
@@ -31,12 +30,11 @@ function LoggedInContainer(props) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({googleId : user.googleId}) 
+      body: JSON.stringify({googleid : user.googleId}) 
     })
       .then((response) => response.json())
       .then((data) => {
-        setData(data)
-        console.log(data)
+        setData(data.rows)
       }
       );
   }
@@ -54,6 +52,11 @@ function LoggedInContainer(props) {
       />
 
       <Router>
+        <div className='search'>
+          <Link to='/search'>
+              <button onClick={()=>getData(searchReq)}>search</button>
+          </Link>
+        </div>
         <div className='logoWithOptions'>
           <Link to='/'>
             <button id='logo'>IntQ</button>
@@ -94,6 +97,9 @@ function LoggedInContainer(props) {
           </Route>
           <Route path='/AddQ'>
             <AddQ user={user} />
+          </Route>
+          <Route path='/search'>
+            <SeeQ title='Searched Questions' data={data} user={user}/>
           </Route>
           <Route path='/'>
             <Homepage user={user} />

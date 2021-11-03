@@ -14,11 +14,13 @@ function SearchBar( params ) {
   async function enterSearch() {
     await search();
     document.querySelector('#searchText').value = '';
-
+    console.log(searchReq)
   }
+
   return (
     <div className='searchBarWrapper'>
       <select className='searchOptions' id='searchOption'>
+            <option value='anyKeyword'>Search</option>
             <option value='company'>Company</option>
             <option value='type'>Question Type</option>
             <option value='role'>Role</option>
@@ -26,6 +28,7 @@ function SearchBar( params ) {
       <input id='searchText' placeholder='Search'></input>
       <button onClick={enterSearch}>Search</button>
     </div>
+    
   );
 }
 export default SearchBar;
