@@ -79,7 +79,7 @@ body {
       position: absolute;
       top: 6vh;
       right: 3vh;
-      box-shadow: 3px 3px 10px 6px $lilac;
+      
       border-radius: 4px;
       display: flex;
       // flex-direction: column;
@@ -88,7 +88,7 @@ body {
 
       button {
         background-color: transparent;
-        border: none;
+        border: 1px solid $greyColor;
         height: 7vh;
         width: 15vh;
         font-size: 2vh;

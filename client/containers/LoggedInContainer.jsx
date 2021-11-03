@@ -52,7 +52,7 @@ function LoggedInContainer(props) {
                   <button>My questions</button>
                 </div>
               ) : (
-                ''
+               <div></div>
               )}
             </Link>
           </div>
