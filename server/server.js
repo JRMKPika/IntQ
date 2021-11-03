@@ -15,6 +15,24 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 
 app.use("/build", express.static(path.join(__dirname, "../build")));
 
+app.get('/search/company',
+userController.searchByCompany,
+(req, res) => {
+return res.status(200).json(res.locals.searchResults);
+});
+
+app.get('/search/role',
+userController.searchByRole,
+(req, res) => {
+  return res.status(200).json(res.locals.searchResults);
+});
+
+app.get('/search/type',
+userController.searchByType,
+(req, res) => {
+  return res.status(200).json(res.locals.searchResults);
+});
+
 app.post('/addQuestion',
  userController.AddQuestion,
   (req,res) => {});

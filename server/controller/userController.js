@@ -70,4 +70,74 @@ userController.AddQuestion = async (req, res, next) => {
 
 }
 
+userController.searchByCompany = async (req, res, next) => {
+try{
+
+    const orgName = req.body.company;
+
+    const searchQuery = `SELECT question, organization, type, role, date from questions WHERE organization='${orgName}'`;
+
+    db.query(searchQuery)
+    .then((data) => {
+        res.locals.searchResults = data.rows;
+        return next();
+    })
+    .catch(err => console.log("error while searching for items by company name: ",err))
+
+}catch(err) {
+    const defaultErr = {
+        log: 'Error handler caught an error inside searchByCompany',
+        status: 500,
+        message: { err: 'An error occurred while searching by company' },
+      };
+      next(defaultErr);
+      }
+}
+
+userController.searchByType = async (req, res, next) => {
+try{
+
+    const questionType = req.body.questionTypes;
+
+    const searchQuery = `SELECT question, organization, type, role, date from questions WHERE type='${questionType}'`;
+
+    db.query(searchQuery)
+    .then((data) => {
+        res.locals.searchResults = data.rows;
+        return next();
+    })
+    .catch(err => console.log("error while searching for items by question type: ",err))
+}catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside searchByType',
+            status: 500,
+            message: { err: 'An error occurred while searching by type' },
+          };
+          next(defaultErr);
+          }
+}
+
+userController.searchByRole = async (req, res, next) => {
+try{
+
+    const roleType = req.body.role;
+
+    const searchQuery = `SELECT question, organization, type, role, date from questions WHERE role='${roleType}'`;
+
+    db.query(searchQuery)
+    .then((data) => {
+        res.locals.searchResults = data.rows;
+        return next();
+    })
+    .catch(err => console.log("error while searching for items by role: ",err))
+}catch(err) {
+    const defaultErr = {
+        log: 'Error handler caught an error inside searchByRole',
+        status: 500,
+        message: { err: 'An error occurred while searching by role' },
+      };
+      next(defaultErr);
+      }
+}
+
 module.exports = userController;
