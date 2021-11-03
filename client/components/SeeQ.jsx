@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from './Card.jsx';
 import Questions from './Questions.jsx';
 
 function SeeQ(props) {
@@ -7,7 +6,10 @@ function SeeQ(props) {
   return (
     <div className='seeQWrapper'>
       <h1> {title}</h1>
+      <div className='questions'>
       <Questions data={data} />
+      </div>
+     
     </div>
   );
 }

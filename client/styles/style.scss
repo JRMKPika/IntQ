@@ -17,7 +17,7 @@ body {
     align-items: center;
     justify-content: center;
     .loginSquare {
-      padding-top: 7vh;
+      padding: 7vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -25,7 +25,7 @@ body {
       width: 100vh;
       height: 80vh;
       text-align: center;
-      border: 1px solid $lilac;
+      border: 2px solid $lilac;
       border-radius: 2vh;
     }
     #start {
@@ -37,8 +37,8 @@ body {
       border-radius: 2vh;
       background-color: $green;
       color: $backgroundColor;
-      margin-top: 5vh;
-      margin-bottom: 7vh;
+      margin-top: 7vh;
+      margin-bottom: 9vh;
       cursor: pointer;
     }
   }
@@ -52,32 +52,49 @@ body {
     color: $greyColor;
     // font-family: Encode Sans Semi Expanded;
     font-family: $generalFont;
-    h1{
-      margin-top:5vh;
-      font-size: 3vh;
-  }
-    #AddOrSee {
-      position: absolute;
-      top: 20vh;
-      left: 120vh;
-      
-      border-radius: 2vh;
-      width: 10vh;
-      height: 7vh;
-      display: flex;
-  
-      align-items: center;
+    .homepage {
+      width: 100vh;
+      display:flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 1vh;
+      align-items: center;
+      .homepageQ{
+        margin-top: 5vh;
+        display: grid;
+        gap:2vh;
+        grid-template-columns: repeat(3,1fr);
+      }
     }
-    #plusIcon {
+    .logoWithOptions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      #AddOrSee {
+        margin-top: 1.4vh;
+        border-radius: 2vh;
+        width: 10vh;
+        height: 7vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1vh;
+      }
+      #plusIcon {
+        font-size: 3vh;
+        color: $green;
+      }
+      #seeIcon {
+        font-size: 3vh;
+        color: $green;
+      }
+    }
+
+    h1 {
+      margin-top: 5vh;
       font-size: 3vh;
-      color: $green;
     }
-    #seeIcon {
-      font-size: 3vh;
-      color: $green;
-    }
+
     .dropdown {
       position: absolute;
       top: 6vh;
@@ -101,15 +118,17 @@ body {
       }
     }
     .addQWrapper {
+      margin-top: 5vh;
       padding: 5vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: $lilac;
+      color: $greyColor;
+      background-color: $backgroundColor;
       width: 100vh;
       height: 80vh;
       text-align: center;
-      border: none;
+      border: 1px solid $lilac;
       border-radius: 2vh;
       .form {
         display: flex;
@@ -117,21 +136,25 @@ body {
         gap: 2vh;
         margin-top: 5vh;
         input {
-          background-color: $backgroundColor;
+          background-color: $lilac;
           border: none;
+          color: $backgroundColor;
           width: 30vh;
           border-radius: 2vh;
           padding: 1vh;
           margin-bottom: 1vh;
         }
+        ::placeholder {
+          color: $backgroundColor;
+        }
         #questionTypes {
-          background-color: $backgroundColor;
+          background-color: $lilac;
           border: none;
           width: 33vh;
           border-radius: 2vh;
           padding: 1vh;
           margin-bottom: 1vh;
-          color: rgb(132, 132, 132);
+          color: $backgroundColor;
         }
       }
       .submitButtons {
@@ -139,7 +162,7 @@ body {
         display: flex;
         gap: 7vh;
         button {
-          background-color: $greyColor;
+          background-color: $green;
           color: $backgroundColor;
           border: none;
           border-radius: 5vh;
@@ -157,6 +180,8 @@ body {
       input {
         border-radius: 2vh;
       }
+      display: flex;
+      gap:1vh;
     }
 
     .userOptionsWrapper {
@@ -170,6 +195,9 @@ body {
       font-size: 1vh;
       #arrowDown {
         font-size: 1.5vh;
+      }
+      h2{
+        font-size: 2vh;
       }
     }
   }
@@ -193,5 +221,4 @@ body {
     // font-size: 1vh;
     // width: 10vh;
   }
- 
 }
