@@ -17,7 +17,7 @@ function Homepage(props) {
   if (topTen === undefined) return <div> </div>;
   return (
     <div className='homepage'>
-      <h1>Latest Questions!</h1>
+   
       <div className='homepageQ'>
       {topTen.map((el, index) => (
         <Card key={index} data={el} user={user} />

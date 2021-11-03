@@ -13,34 +13,28 @@ function Card(props) {
   const { data, user } = props;
   function deleteQ() {
     fetch('/deleteQ', {
+      method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: data.id }),
     }).catch((err) => console.log('Error while deleting question: ', err));
   }
- 
+
   return (
     <div className='totalCard'>
       <div className='card'>
-        <h3>{data.question}</h3>
-        <h4>
-          {data.type}--{data.role}
-        </h4>
-        <h5>
-          {data.username}--{data.date}
-        </h5>
+        <span id='highlight'>{data.question}</span>
+        <h4>{data.role}</h4>
+        <h5>Type: {data.type}</h5>
+        <h6>{data.date}</h6>
       </div>
- 
+
       {data.googleid === user.googleId ? (
-        <span
-          onClick={() => {
-            deleteQ;
-          }}
-        > 
+        <span onClick={deleteQ}>
           <FontAwesomeIcon id='exitIcon' icon={faWindowClose} />
         </span>
       ) : (
         ''
-      )} 
+      )}
     </div>
   );
 }
