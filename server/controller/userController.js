@@ -73,7 +73,7 @@ userController.AddQuestion = async (req, res, next) => {
 userController.searchByCompany = async (req, res, next) => {
 try{
 
-    const orgName = req.body.company;
+    const orgName = req.params.searchText;
 
     const searchQuery = `SELECT question, organization, type, role, date from questions WHERE organization='${orgName}'`;
 
@@ -97,7 +97,7 @@ try{
 userController.searchByType = async (req, res, next) => {
 try{
 
-    const questionType = req.body.questionTypes;
+    const questionType = req.params.searchText;
 
     const searchQuery = `SELECT question, organization, type, role, date from questions WHERE type='${questionType}'`;
 
@@ -119,8 +119,7 @@ try{
 
 userController.searchByRole = async (req, res, next) => {
 try{
-
-    const roleType = req.body.role;
+    const roleType = req.params.searchText;
 
     const searchQuery = `SELECT question, organization, type, role, date from questions WHERE role='${roleType}'`;
 
