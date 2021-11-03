@@ -10,13 +10,18 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 // date: data.date,
 // id: data.id
 function Card(props) {
-  const { data, user } = props;
+  const { data, user, id } = props;
   function deleteQ() {
     fetch('/deleteQ', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: data.id }),
     }).catch((err) => console.log('Error while deleting question: ', err));
+    let node = document.getElementById(id);
+    if (node.parentNode) {
+      console.log('deleted?')
+      node.parentNode.removeChild(node);
+    }
   }
 
   return (
@@ -24,7 +29,7 @@ function Card(props) {
       <div className='card'>
         <span id='highlight'>{data.question}</span>
         <h4>{data.role}</h4>
-        <h5>Type: {data.type}</h5>
+        <h5>{data.organization} - Type: {data.type}</h5>
         <h6>{data.date}</h6>
       </div>
 

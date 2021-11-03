@@ -7,7 +7,7 @@ function Questions(props) {
   return (
     <div className='questionsWrapper'>
       {data.map((el, index) => (
-        <Card key={index} data={el} user={user} />
+        <Card key={'card'+ index} id={'card'+ index} data={el} user={user} />
       ))}
     </div>
   );
