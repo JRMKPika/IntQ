@@ -5,7 +5,13 @@ function SearchBar( params ) {
   function search() {
     const searchOption = document.querySelector('#searchOption').value;
     const searchText = document.querySelector('#searchText').value;
-    fetch(`/search/${searchOption}/${searchText}`)
+
+    fetch(`/search/${searchOption}/${searchText}`,
+    {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json' },
+    }
+    )
       .then((response) => response.json())
       .then((data) => params.setQuery(data));
   }

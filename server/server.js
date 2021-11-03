@@ -15,19 +15,19 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 
 app.use("/build", express.static(path.join(__dirname, "../build")));
 
-app.get('/search/company',
+app.get('/search/company/:searchText',
 userController.searchByCompany,
 (req, res) => {
 return res.status(200).json(res.locals.searchResults);
 });
 
-app.get('/search/role',
+app.get('/search/role/:searchText',
 userController.searchByRole,
 (req, res) => {
   return res.status(200).json(res.locals.searchResults);
 });
 
-app.get('/search/type',
+app.get('/search/type/:searchText',
 userController.searchByType,
 (req, res) => {
   return res.status(200).json(res.locals.searchResults);
