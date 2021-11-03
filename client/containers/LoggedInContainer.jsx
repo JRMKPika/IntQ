@@ -16,12 +16,15 @@ function LoggedInContainer(props) {
   const [selected, setSelected] = useState('home');
   const [data, setData] = useState('');
   const [dropdown, setDropdown] = useState(false);
-  const [searchReq, setSearchReq] = useState([]);
+  const [searchReq, setSearchReq] = useState('');
   function getData(link) {
     // GET request using fetch inside useEffect React hook
     fetch(link)
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        setData(data)
+        console.log(data)
+    });
   }
   function getMyData(link) {
     // GET request using fetch inside useEffect React hook
@@ -39,11 +42,22 @@ function LoggedInContainer(props) {
       );
   }
 
+
+  async function enterSearch() {
+    const searchOption = document.querySelector('#searchOption').value;
+    const searchText = document.querySelector('#searchText').value;
+    const concat = `/search/${searchOption}/${searchText}`
+    console.log(searchReq)
+    await getData(concat)
+    document.querySelector('#searchText').value = '';
+  }
+
   return (
     <div className='loggedInContainerWrapper'>
       <SearchBar 
       setData={setData}
       setSearchReq={setSearchReq}
+      getMyData={getMyData}
       />
       <UserOptions
         username={user.name}
@@ -54,7 +68,7 @@ function LoggedInContainer(props) {
       <Router>
         <div className='search'>
           <Link to='/search'>
-              <button onClick={()=>getData(searchReq)}>search</button>
+              <button onClick={enterSearch}>Search</button>
           </Link>
         </div>
         <div className='logoWithOptions'>

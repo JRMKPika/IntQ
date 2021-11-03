@@ -1,21 +1,6 @@
 import React, { useState } from 'react';
 
 function SearchBar( params ) {
-  const [data, setData ] = useState([]);
-  const [searchReq, setSearchReq ] = useState([]);
-
-  async function search() {
-    const searchOption = document.querySelector('#searchOption').value;
-    const searchText = document.querySelector('#searchText').value;
-    setSearchReq(`/search/${searchOption}/${searchText}`)
-    console.log(searchReq)
-  }
-
-  async function enterSearch() {
-    await search();
-    document.querySelector('#searchText').value = '';
-    console.log(searchReq)
-  }
 
   return (
     <div className='searchBarWrapper'>
@@ -26,7 +11,6 @@ function SearchBar( params ) {
             <option value='role'>Role</option>
           </select>
       <input id='searchText' placeholder='Search'></input>
-      <button onClick={enterSearch}>Search</button>
     </div>
     
   );
