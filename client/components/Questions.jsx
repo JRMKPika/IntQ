@@ -3,7 +3,7 @@ import Card from './Card.jsx';
 
 function Questions(props) {
   const {data,user}  = props;
-  if(!data) return <div> </div>;
+  if(!Array.isArray(data)) return <div> </div>;
   return (
     <div className='questionsWrapper'>
       {data.map((el, index) => (

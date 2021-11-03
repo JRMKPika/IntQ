@@ -16,18 +16,49 @@ function LoggedInContainer(props) {
   const [selected, setSelected] = useState('home');
   const [data, setData] = useState('');
   const [dropdown, setDropdown] = useState(false);
-
+  const [searchReq, setSearchReq] = useState('');
   function getData(link) {
     // GET request using fetch inside useEffect React hook
     fetch(link)
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        setData(data)
+        console.log(data)
+    });
+  }
+  function getMyData(link) {
+    // GET request using fetch inside useEffect React hook
+    fetch(link, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({googleid : user.googleId}) 
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data.rows)
+      }
+      );
+  }
+
+
+  async function enterSearch() {
+    const searchOption = document.querySelector('#searchOption').value;
+    const searchText = document.querySelector('#searchText').value;
+    const concat = `/search/${searchOption}/${searchText}`
+    console.log(searchReq)
+    await getData(concat)
+    document.querySelector('#searchText').value = '';
   }
 
   return (
     <div className='loggedInContainerWrapper'>
-      <SearchBar />
-
+      <SearchBar 
+      setData={setData}
+      setSearchReq={setSearchReq}
+      getMyData={getMyData}
+      />
       <UserOptions
         username={user.name}
         dropdown={dropdown}
@@ -35,6 +66,11 @@ function LoggedInContainer(props) {
       />
 
       <Router>
+        <div className='search'>
+          <Link to='/search'>
+              <button onClick={enterSearch}>Search</button>
+          </Link>
+        </div>
         <div className='logoWithOptions'>
           <Link to='/'>
             <button id='logo'>IntQ</button>
@@ -47,7 +83,7 @@ function LoggedInContainer(props) {
             </Link>
             <div className='seeQ'>
               <Link to='/SeeQ'>
-                <span onClick={getData('/allQ')}>
+                <span onClick={()=>getData('/allQ')}>
                   <FontAwesomeIcon id='seeIcon' icon={faListAlt} />
                 </span>
               </Link>
@@ -58,7 +94,7 @@ function LoggedInContainer(props) {
           <Link to='/myQuestions'>
             {dropdown ? (
               <div className='dropdown'>
-                <button>My questions</button>
+                <button onClick={()=>getMyData('/myQ')} >My questions</button>
               </div>
             ) : (
               <div></div>
@@ -75,6 +111,9 @@ function LoggedInContainer(props) {
           </Route>
           <Route path='/AddQ'>
             <AddQ user={user} />
+          </Route>
+          <Route path='/search'>
+            <SeeQ title='Searched Questions' data={data} user={user}/>
           </Route>
           <Route path='/'>
             <Homepage user={user} />

@@ -57,6 +57,22 @@ body {
     color: $greyColor;
     // font-family: Encode Sans Semi Expanded;
     font-family: $generalFont;
+    .search {
+      button {
+        font-family: $generalFont;
+        width: 10vh;
+        height: 4vh;
+        text-align: center;
+        border: none;
+        border-radius: 2vh;
+        background-color: $green;
+        color: $backgroundColor;
+        cursor: pointer;
+        position: absolute;
+        top: 4.5vh;
+        left: 48vh;
+      }
+    }
     .homepage {
       width: 100vh;
       display: flex;
@@ -204,15 +220,7 @@ body {
       }
 
       button {
-        font-family: $generalFont;
-        width: 10vh;
-        height: 4vh;
-        text-align: center;
-        border: none;
-        border-radius: 2vh;
-        background-color: $green;
-        color: $backgroundColor;
-        cursor: pointer;
+
       }
       .searchOptions {
         border: 1px solid $lilac;

@@ -14,7 +14,7 @@ function Homepage(props) {
       .then((data) => {
       setTopTen(data)});
   }, []);
-  if (topTen === undefined) return <div> </div>;
+  if (!topTen) return <div> </div>;
   return (
     <div className='homepage'>
    
