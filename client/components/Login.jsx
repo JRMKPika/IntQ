@@ -15,6 +15,7 @@ const Login = (props) => {
       name: name,
       email: email,
     };
+    console.log("Inside loginwithGoogle");
     fetch(`/loginUser`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
