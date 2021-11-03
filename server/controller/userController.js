@@ -44,15 +44,44 @@ userController.signIn = async (req, res, next) => {
         };
         next(defaultErr);
       };
-}
+},
 
-//newest ten
-//all questions
-//('/allQ')
-//('/myQ')
-//myQuestions
-//searchByCompany, searchByQuestionType, searchByRole
-//
+//Grab user's questions
+userController.myQ = async (req, res, next) => {
+    try {
+        const googleID = req.body.googleid;
+        const myQ = await db.query(`SELECT * FROM questions WHERE googleid=${googleID}`);
+        res.locals.myQ = myQ;
+        return next()
+    }
+    catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside myQ',
+            status: 500,
+            message: {err: 'An error occured'}
+        };
+        next(defaultErr)
+    }
+},
+
+//Delete a user's question
+userController.deleteQ = async (req, res, next) => {
+    try {
+        const ID = req.body.id;
+        //returns only the number of deleted rows
+        const deleteQ = await db.query(`DELETE FROM questions WHERE id=${ID}`);
+        res.locals.deleteQ = deleteQ;
+        return next()
+    }
+    catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside myQ',
+            status: 500,
+            message: {err: 'An error occured'}
+        };
+        next(defaultErr)
+    }
+},
 
 //Grab 10 most recent questions
 userController.newestTen = async (req, res, next) => {
@@ -63,15 +92,16 @@ userController.newestTen = async (req, res, next) => {
     }
     catch(err) {
         const defaultErr = {
-            log: 'Error handler caught an error inside homePage',
+            log: 'Error handler caught an error inside newestTen',
             status: 500,
             message: {err: 'An error occured'}
         };
         next(defaultErr)
     }
-}
+},
 
 //Grab all questions from entire database
+//could add distinct constraint to prevent returning dulpliate questions...
 userController.allQ = async (req, res, next) => {
     try {
         const allQ = await db.query("SELECT * FROM questions")
@@ -80,7 +110,7 @@ userController.allQ = async (req, res, next) => {
     }
     catch(err) {
         const defaultErr = {
-            log: 'Error handler caught an error inside homePage',
+            log: 'Error handler caught an error inside allQ',
             status: 500,
             message: {err: 'An error occured'}
         };
