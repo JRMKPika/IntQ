@@ -56,7 +56,7 @@ function AddQ(props) {
             <option value='system design'>System design</option>
             <option value='technology'>Technology</option>
           </select>
-          <label>Rol: </label>
+          <label>Role: </label>
           <input
             id='role'
             placeholder='i.e. Front End Senior Software Engineer'
