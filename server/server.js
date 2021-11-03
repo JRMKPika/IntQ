@@ -21,6 +21,12 @@ app.post('/addQuestion',
     return res.status(200).json(res.locals.user);
   });
 
+app.get('/search/anyKeyword/:keyword',
+userController.searchWithAnyKeyword,
+(req, res) => {
+  return res.send(200).json(res.locals.searchResults);
+})
+
 app.get('/search/type/:searchText',
 userController.searchByType,
 (req, res) => {
