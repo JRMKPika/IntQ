@@ -4,6 +4,7 @@ const db = require('../model/userModel.js');
 
 const userController = {};
 
+//signIn user
 userController.signIn = async (req, res, next) => {
     try{
          
@@ -101,7 +102,6 @@ userController.newestTen = async (req, res, next) => {
 },
 
 //Grab all questions from entire database
-//could add distinct constraint to prevent returning dulpliate questions...
 userController.allQ = async (req, res, next) => {
     try {
         const allQ = await db.query("SELECT * FROM questions")
