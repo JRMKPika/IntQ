@@ -2,10 +2,9 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = 3000;
-let sessionId;
+const routes = require('./routes')
 
 const userController = require('./controller/userController.js')
-
 
 app.use(express.urlencoded({extended: true}));
 
@@ -47,6 +46,8 @@ app.get('/', (req,res)=> {
   return res.status(200).sendFile(path.join(__dirname, "../client/index.html"));
 });
 
+app.use('/', routes);
+
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught an unknown middleware error',
@@ -61,6 +62,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, ()=> {
   console.log(`The server is on on port ${PORT}. It's listening...`); 
 });
-
 
 module.exports = app;
