@@ -9,7 +9,7 @@ body {
     color: $greyLogoColor;
     background-color: transparent;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
   }
   .loginWrapper {
     height: 100vh;
@@ -28,11 +28,35 @@ body {
       text-align: center;
       border: 2px solid $lightGrey;
       border-radius: 2vh;
-     #subtitle{
-      font-size: 3vh;
-     }
-    }
+      #subtitle {
+        font-size: 3vh;
+      }
+      .arrowAndGoogle{
+        display: flex;
+        flex-direction:column;
+        gap:2vh;
+        align-items: center;
+        justify-content: center;
+
+        #arrowIcon{
+          width: 3vh;
+          height: 10vh;
+          animation: arrowAnimation 0.6s ;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        }
+        @keyframes arrowAnimation {
+          0% {
+            transform: translate3d(0, -50%, 0);
+          }
+    
+          100% {
+            transform: translate(0, 0, 0);
+          }
+      }
+    }}
     #start {
+      animation: buttonAnimation 5s 1;
       font-family: $generalFont;
       width: 12vh;
       height: 7vh;
@@ -42,10 +66,19 @@ body {
       background-color: $green;
       color: $backgroundColor;
       margin-top: 7vh;
-      margin-bottom: 9vh;
+      margin-bottom: 7vh;
       cursor: pointer;
       font-size: 2vh;
     }
+    @keyframes buttonAnimation {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  
   }
   .loggedInContainerWrapper {
     margin-top: 2vh;
@@ -156,6 +189,7 @@ body {
         flex-direction: column;
         gap: 2vh;
         margin-top: 5vh;
+        font-size: 2vh;
         input {
           background-color: $lilac;
           border: none;
@@ -165,10 +199,12 @@ body {
           padding: 1vh;
           margin-bottom: 1vh;
           font-family: $generalFont;
+          font-size: 1.5vh;
         }
         ::placeholder {
           color: $backgroundColor;
           font-family: $generalFont;
+          font-size: 1.5vh;
         }
         #questionTypes {
           background-color: $lilac;
@@ -179,6 +215,7 @@ body {
           margin-bottom: 1vh;
           color: $backgroundColor;
           font-family: $generalFont;
+          font-size: 1.5vh;
         }
       }
       .submitButtons {
@@ -194,6 +231,7 @@ body {
           width: 20vh;
           font-family: $generalFont;
           cursor: pointer;
+          font-size: 1.5vh;
         }
       }
     }
@@ -211,16 +249,15 @@ body {
         border: 1px solid $lilac;
         color: $greyColor;
         font-family: $generalFont;
-        padding-left:0.5vh;
+        padding-left: 0.5vh;
       }
       ::placeholder {
         color: $greyColor;
         font-family: $generalFont;
-        padding-left:0.5vh;
+        padding-left: 0.5vh;
       }
 
       button {
-
       }
       .searchOptions {
         border: 1px solid $lilac;
@@ -251,7 +288,7 @@ body {
       top: 3vh;
       right: 5vh;
       display: flex;
-      gap: 1vh;
+      gap: 1.5vh;
       align-items: center;
       justify-content: center;
       font-size: 1vh;
@@ -278,15 +315,15 @@ body {
         font-size: 3vh;
         font-weight: 800;
       }
-      h4{
+      h4 {
         font-size: 2vh;
       }
-      h5{
+      h5 {
         font-size: 1.5vh;
       }
-      h6{
+      h6 {
         font-size: 1.5vh;
-        color:$lilac;
+        color: $lilac;
       }
     }
 
@@ -298,7 +335,6 @@ body {
       :active {
         color: black;
       }
-      
     }
   }
   .searchOptions {

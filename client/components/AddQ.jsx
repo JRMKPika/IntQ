@@ -65,7 +65,7 @@ function AddQ(props) {
       </form>
       <div className='submitButtons'>
         <button onClick={AddAndFinish}>Submit and finish</button>
-        <button onClick={AddAndContinue}>Submit and continue adding</button>
+        <button onClick={AddAndContinue}>Submit and continue</button>
       </div>
     </div>
   );
