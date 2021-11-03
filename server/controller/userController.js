@@ -138,6 +138,29 @@ userController.AddQuestion = async (req, res, next) => {
   }
 };
 
+userController.searchWithAnyKeyword = async(req, res, next) => {
+    try{
+        const searchKey = req.params.keyword;
+
+        const searchQuery = `SELECT * FROM questions WHERE id||question||organization||type||role||date||googleId like '%${searchKey}%'`;
+
+        db.query(searchQuery)
+        .then((data) => {
+            res.locals.searchResults = data.rows;
+            return next();
+        })
+        .catch(err => console.log("error while searching for rows with the provided keyword ",err))
+    }
+    catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside searchWithAnyKeyword',
+            status: 500,
+            message: { err: 'An error occurred while searching with the provided keyword' },
+          };
+          next(defaultErr);
+    }
+}
+
 userController.searchByCompany = async (req, res, next) => {
   try {
     const orgName = req.params.searchText;
