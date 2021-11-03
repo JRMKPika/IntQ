@@ -1,24 +1,31 @@
 import React, { useState } from 'react';
 
 function SearchBar( params ) {
+  const [data, setData ] = useState([]);
 
-  function search() {
+  async function search() {
     const searchOption = document.querySelector('#searchOption').value;
     const searchText = document.querySelector('#searchText').value;
 
-    fetch(`/search/${searchOption}/${searchText}`,
+    await fetch(`/search/${searchOption}/${searchText}`,
     {
       method: 'GET',
       headers: {'Content-Type': 'application/json' },
     }
     )
       .then((response) => response.json())
-      .then((data) => params.setQuery(data));
+      .then((resp) => {
+        setData(resp)
+        console.log('in fetch', resp)
+      }
+      );
   }
 
   async function enterSearch() {
     await search();
     document.querySelector('#searchText').value = '';
+    console.log(data)
+
     
   }
   return (

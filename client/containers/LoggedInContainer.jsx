@@ -15,7 +15,7 @@ function LoggedInContainer(props) {
   const { user } = props;
   const [selected, setSelected] = useState('home');
   const [data, setData] = useState('');
-  const [query, setQuery ] = useState([]);
+  
  
   function getData (link) {
     // GET request using fetch inside useEffect React hook
