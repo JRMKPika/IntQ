@@ -3,7 +3,7 @@ import Card from './Card.jsx';
 
 //for each data render card with attributes
 
-function Homepage() {
+function Homepage(props) {
   // fetch reqest to back end gets 10 newest questions
   const [topTen, setTopTen] = useState([]);
   const { user } = props;
