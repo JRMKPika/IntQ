@@ -32,14 +32,6 @@ function LoggedInContainer(props) {
         dropdown={dropdown}
         setDropdown={setDropdown}
       />
-      {/* {dropdown ? (
-          <div className='dropdown'>
-            
-            <button onClick={() => ''}>Sign out</button>
-          </div>
-        ) : (
-          ''
-        )} */}
       <Router>
         <div>
           <Link to='/'>
@@ -70,16 +62,16 @@ function LoggedInContainer(props) {
           </div>
           <Switch>
             <Route path='/SeeQ'>
-              <SeeQ title='All Questions' data={data} />
+              <SeeQ title='All Questions' data={data} user={user}/>
             </Route>
             <Route path='/myQuestions'>
-              <SeeQ title='My Questions' data={data} />
+              <SeeQ title='My Questions' data={data} user={user}/>
             </Route>
             <Route path='/AddQ'>
               <AddQ user={user} />
             </Route>
             <Route path='/'>
-              <Homepage />
+              <Homepage user={user} />
             </Route>
           </Switch>
         </div>

@@ -1,15 +1,14 @@
 import React from 'react';
-import Card from './Card.jsx'
-import Questions from './Questions.jsx'
+import Card from './Card.jsx';
+import Questions from './Questions.jsx';
 
 function SeeQ(props) {
   const { title, data } = props;
   return (
-    <div>
+    <div className='seeQWrapper'>
       <h1> {title}</h1>
-      <Questions data = {data}/>
+      <Questions data={data} />
     </div>
-  )
-
+  );
 }
 export default SeeQ;

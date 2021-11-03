@@ -7,7 +7,7 @@ function UserOptions(props) {
   const { username,dropdown, setDropdown } = props;
   return (
     <div className='userOptionsWrapper'>
-      <h1>{username}</h1>
+      <h2>{username}</h2>
       <span onClick={() => setDropdown(!dropdown)}>
         <FontAwesomeIcon id='arrowDown' icon={faArrowDown} />
       </span>
