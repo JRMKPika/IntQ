@@ -26,7 +26,7 @@ const Login = (props) => {
         setLoggedIn(true);
       })
       .catch((err) =>
-        console.log('An error was found while singing in via google : ', err)
+        console.log('An error was found while signing in via google : ', err)
       );
   };
 
