@@ -2,6 +2,7 @@ const db = require('../model/userModel.js');
 
 const userController = {};
 
+//signIn user
 userController.signIn = async (req, res, next) => {
     try{
          
@@ -40,6 +41,77 @@ userController.signIn = async (req, res, next) => {
         };
         next(defaultErr);
       };
+},
+
+//Grab user's questions
+userController.myQ = async (req, res, next) => {
+    try {
+        const googleID = req.body.googleid;
+        const myQ = await db.query(`SELECT * FROM questions WHERE googleid=${googleID}`);
+        res.locals.myQ = myQ;
+        return next()
+    }
+    catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside myQ',
+            status: 500,
+            message: {err: 'An error occured'}
+        };
+        next(defaultErr)
+    }
+},
+
+//Delete a user's question
+userController.deleteQ = async (req, res, next) => {
+    try {
+        const ID = req.body.id;
+        //returns only the number of deleted rows
+        const deleteQ = await db.query(`DELETE FROM questions WHERE id=${ID}`);
+        res.locals.deleteQ = deleteQ;
+        return next()
+    }
+    catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside myQ',
+            status: 500,
+            message: {err: 'An error occured'}
+        };
+        next(defaultErr)
+    }
+},
+
+//Grab 10 most recent questions
+userController.newestTen = async (req, res, next) => {
+    try {
+        const newestTen = await db.query("SELECT * FROM questions ORDER BY date DESC LIMIT 10")
+        res.locals.newestTen = newestTen.rows;
+        return next()        
+    }
+    catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside newestTen',
+            status: 500,
+            message: {err: 'An error occured'}
+        };
+        next(defaultErr)
+    }
+},
+
+//Grab all questions from entire database
+userController.allQ = async (req, res, next) => {
+    try {
+        const allQ = await db.query("SELECT * FROM questions")
+        res.locals.allQ = allQ.rows;
+        return next()        
+    }
+    catch(err) {
+        const defaultErr = {
+            log: 'Error handler caught an error inside allQ',
+            status: 500,
+            message: {err: 'An error occured'}
+        };
+        next(defaultErr)
+    }
 }
 
 userController.AddQuestion = async (req, res, next) => {
