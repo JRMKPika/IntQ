@@ -2,31 +2,19 @@ import React, { useState } from 'react';
 
 function SearchBar( params ) {
   const [data, setData ] = useState([]);
+  const [searchReq, setSearchReq ] = useState([]);
 
   async function search() {
     const searchOption = document.querySelector('#searchOption').value;
     const searchText = document.querySelector('#searchText').value;
-
-    await fetch(`/search/${searchOption}/${searchText}`,
-    {
-      method: 'GET',
-      headers: {'Content-Type': 'application/json' },
-    }
-    )
-      .then((response) => response.json())
-      .then((resp) => {
-        setData(resp)
-        console.log('in fetch', resp)
-      }
-      );
+    setSearchReq(`/search/${searchOption}/${searchText}`)
+    console.log(searchReq)
   }
 
   async function enterSearch() {
     await search();
     document.querySelector('#searchText').value = '';
-    console.log(data)
 
-    
   }
   return (
     <div className='searchBarWrapper'>

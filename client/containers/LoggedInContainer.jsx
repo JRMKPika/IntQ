@@ -16,6 +16,7 @@ function LoggedInContainer(props) {
   const [selected, setSelected] = useState('home');
   const [data, setData] = useState('');
   const [dropdown, setDropdown] = useState(false);
+  const [searchReq, setSearchReq] = useState([]);
 
   function getData(link) {
     // GET request using fetch inside useEffect React hook
@@ -26,7 +27,10 @@ function LoggedInContainer(props) {
 
   return (
     <div className='loggedInContainerWrapper'>
-      <SearchBar setData={setData}/>
+      <SearchBar 
+      setData={setData}
+      setSearchReq={setSearchReq}
+      />
       <UserOptions
         username={user.name}
         dropdown={dropdown}
@@ -38,7 +42,7 @@ function LoggedInContainer(props) {
             <button id='logo'>IntQ</button>
           </Link>
           <div className='dropdown'>
-            <Link to='/myQuestions'>
+            <Link to='/myQ'>
               {dropdown ? (
                 <div className='dropdown'>
                   <button>My questions</button>
@@ -64,7 +68,7 @@ function LoggedInContainer(props) {
             <Route path='/SeeQ'>
               <SeeQ title='All Questions' data={data} user={user}/>
             </Route>
-            <Route path='/myQuestions'>
+            <Route path='/myQ'>
               <SeeQ title='My Questions' data={data} user={user}/>
             </Route>
             <Route path='/AddQ'>
