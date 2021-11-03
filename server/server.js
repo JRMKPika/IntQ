@@ -21,11 +21,11 @@ app.post('/addQuestion',
     return res.status(200).json(res.locals.user);
   });
 
-app.get('/search/anyKeyword/:keyword',
-userController.searchWithAnyKeyword,
-(req, res) => {
-  return res.send(200).json(res.locals.searchResults);
-})
+  app.get('/search/anyKeyword/:keyword',
+  userController.searchWithAnyKeyword,
+  (req, res) => {
+    return res.status(200).json(res.locals.searchResults);
+  });
 
 app.get('/search/type/:searchText',
 userController.searchByType,
@@ -50,7 +50,7 @@ app.post(`/loginUser`, userController.signIn, (req, res) => {
 });
 
 app.get('/newestTen', userController.newestTen, (req, res) => {
-  return res.status(200).send(res.locals.newestTen);
+  return res.status(200).json(res.locals.newestTen);
 })
 
 app.get('/allQ', userController.allQ, (req, res) => {
