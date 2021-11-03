@@ -11,27 +11,36 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 // id: data.id
 function Card(props) {
   const { data, user } = props;
+  function deleteQ() {
+    fetch('/deleteQ', {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: data.id }),
+    }).catch((err) => console.log('Error while deleting question: ', err));
+  }
+
   return (
     <div className='totalCard'>
       <div className='card'>
-        Card {data.id}
-        <h1>{data.question}</h1>
-        <p>
+        <h3>{data.question}</h3>
+        <h4>
           {data.type}--{data.role}
-        </p>
-        <p>
+        </h4>
+        <h5>
           {data.username}--{data.date}
-        </p>
+        </h5>
       </div>
-    
-        {data.username === user.name ? (
-          <span onClick={() => {}}>
-            <FontAwesomeIcon id='exitIcon' icon={faWindowClose} />
-          </span>
-        ) : (
-          ''
-        )}
-  
+
+      {data.googleId === user.googleId ? (
+        <span
+          onClick={() => {
+            deleteQ;
+          }}
+        >
+          <FontAwesomeIcon id='exitIcon' icon={faWindowClose} />
+        </span>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

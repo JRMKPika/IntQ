@@ -27,54 +27,59 @@ function LoggedInContainer(props) {
   return (
     <div className='loggedInContainerWrapper'>
       <SearchBar />
+
       <UserOptions
         username={user.name}
         dropdown={dropdown}
         setDropdown={setDropdown}
       />
+
       <Router>
-        <div>
+        <div className='logoWithOptions'>
           <Link to='/'>
             <button id='logo'>IntQ</button>
           </Link>
-          <div className='dropdown'>
-            <Link to='/myQuestions'>
-              {dropdown ? (
-                <div className='dropdown'>
-                  <button>My questions</button>
-                </div>
-              ) : (
-               <div></div>
-              )}
-            </Link>
-          </div>
           <div id='AddOrSee'>
             <Link to='/AddQ'>
               <span>
                 <FontAwesomeIcon id='plusIcon' icon={faPlus} />
               </span>
             </Link>
-            <Link to='/SeeQ'>
-              <span onClick={getData('/allQ')}>
-                <FontAwesomeIcon id='seeIcon' icon={faListAlt} />
-              </span>
-            </Link>
+            <div className='seeQ'>
+              <Link to='/SeeQ'>
+                <span onClick={getData('/allQ')}>
+                  <FontAwesomeIcon id='seeIcon' icon={faListAlt} />
+                </span>
+              </Link>
+            </div>
           </div>
-          <Switch>
-            <Route path='/SeeQ'>
-              <SeeQ title='All Questions' data={data} user={user}/>
-            </Route>
-            <Route path='/myQuestions'>
-              <SeeQ title='My Questions' data={data} user={user}/>
-            </Route>
-            <Route path='/AddQ'>
-              <AddQ user={user} />
-            </Route>
-            <Route path='/'>
-              <Homepage user={user} />
-            </Route>
-          </Switch>
         </div>
+        <div className='dropdown'>
+          <Link to='/myQuestions'>
+            {dropdown ? (
+              <div className='dropdown'>
+                <button>My questions</button>
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </Link>
+        </div>
+
+        <Switch>
+          <Route path='/SeeQ'>
+            <SeeQ title='All Questions' data={data} user={user} />
+          </Route>
+          <Route path='/myQuestions'>
+            <SeeQ title='My Questions' data={data} user={user} />
+          </Route>
+          <Route path='/AddQ'>
+            <AddQ user={user} />
+          </Route>
+          <Route path='/'>
+            <Homepage user={user} />
+          </Route>
+        </Switch>
       </Router>
     </div>
   );
