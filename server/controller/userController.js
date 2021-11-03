@@ -176,6 +176,7 @@ try{
     db.query(searchQuery)
     .then((data) => {
         res.locals.searchResults = data.rows;
+        console.log("search results ", res.locals.searchResults);
         return next();
     })
     .catch(err => console.log("error while searching for items by question type: ",err))
