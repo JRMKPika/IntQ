@@ -17,18 +17,33 @@ body {
     align-items: center;
     justify-content: center;
     .loginSquare {
+      padding-top: 7vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: $centerColor;
+      font-family: $generalFont;
       width: 100vh;
       height: 80vh;
       text-align: center;
+      border: 1px solid $lilac;
+      border-radius: 2vh;
+    }
+    #start {
+      font-family: $generalFont;
+      width: 12vh;
+      height: 7vh;
+      text-align: center;
       border: none;
       border-radius: 2vh;
+      background-color: $green;
+      color: $backgroundColor;
+      margin-top: 5vh;
+      margin-bottom: 7vh;
+      cursor: pointer;
     }
   }
   .loggedInContainerWrapper {
+    margin-top: 5vh;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -41,8 +56,8 @@ body {
     #AddOrSee {
       position: absolute;
       top: 15vh;
-      right: 10vh;
-      background-color: $greyColor;
+      right: 50vh;
+      background-color: $lilac;
       border-radius: 2vh;
       width: 10vh;
       height: 10vh;
@@ -60,77 +75,109 @@ body {
       font-size: 3vh;
       color: $backgroundColor;
     }
-  }
-  .addQWrapper {
-    padding: 5vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgb(211, 212, 220);
-    width: 100vh;
-    height: 80vh;
-    text-align: center;
-    border: none;
-    border-radius: 2vh;
-    .form {
+    .dropdown {
+      position: absolute;
+      top: 6vh;
+      right: 3vh;
+      box-shadow: 3px 3px 10px 6px $lilac;
+      border-radius: 4px;
+      display: flex;
+      // flex-direction: column;
+      // margin-bottom: 3vh;
+      // gap:2vh;
+
+      button {
+        background-color: transparent;
+        border: none;
+        height: 7vh;
+        width: 15vh;
+        font-size: 2vh;
+        cursor: pointer;
+        font-family: $generalFont;
+        color: $greyColor;
+      }
+      button:hover {
+        color: $green;
+      }
+    }
+    .addQWrapper {
+      padding: 5vh;
       display: flex;
       flex-direction: column;
-      gap: 2vh;
-      margin-top: 5vh;
-      input {
-        background-color: $backgroundColor;
-        border: none;
-        width: 30vh;
-        border-radius: 2vh;
-        padding: 1vh;
-        margin-bottom: 1vh;
-      }
-      #questionTypes {
-        background-color: $backgroundColor;
-        border: none;
-        width: 33vh;
-        border-radius: 2vh;
-        padding: 1vh;
-        margin-bottom: 1vh;
-        color: rgb(132, 132, 132);
-      }
-    }
-    .submitButtons {
-      margin-top: 7vh;
-      display: flex;
-      gap: 7vh;
-      button {
-        background-color: $greyColor;
-        color: $backgroundColor;
-        border: none;
-        border-radius: 5vh;
-        height: 7vh;
-        width: 20vh;
-        font-family: $generalFont;
-        cursor: pointer;
-      }
-    }
-  }
-  .searchBarWrapper {
-    position: absolute;
-    top: 5vh;
-    left: 5vh;
-    input {
+      align-items: center;
+      background-color: rgb(211, 212, 220);
+      width: 100vh;
+      height: 80vh;
+      text-align: center;
+      border: none;
       border-radius: 2vh;
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+        margin-top: 5vh;
+        input {
+          background-color: $backgroundColor;
+          border: none;
+          width: 30vh;
+          border-radius: 2vh;
+          padding: 1vh;
+          margin-bottom: 1vh;
+        }
+        #questionTypes {
+          background-color: $backgroundColor;
+          border: none;
+          width: 33vh;
+          border-radius: 2vh;
+          padding: 1vh;
+          margin-bottom: 1vh;
+          color: rgb(132, 132, 132);
+        }
+      }
+      .submitButtons {
+        margin-top: 7vh;
+        display: flex;
+        gap: 7vh;
+        button {
+          background-color: $greyColor;
+          color: $backgroundColor;
+          border: none;
+          border-radius: 5vh;
+          height: 7vh;
+          width: 20vh;
+          font-family: $generalFont;
+          cursor: pointer;
+        }
+      }
     }
-  }
+    .searchBarWrapper {
+      position: absolute;
+      top: 5vh;
+      left: 5vh;
+      input {
+        border-radius: 2vh;
+      }
+    }
 
-  .userOptionsWrapper {
-    position: absolute;
-    top: 5vh;
-    right: 5vh;
-    font-size: 2vh;
-    cursor: pointer;
+    .userOptionsWrapper {
+      position: absolute;
+      top: 5vh;
+      right: 5vh;
+      display: flex;
+      gap: 1vh;
+      align-items: center;
+      justify-content: center;
+      font-size: 1vh;
+      #arrowDown {
+        font-size: 1.5vh;
+      }
+    }
   }
   .card {
-    background-color: $centerColor;
+    background-color: $green;
     border-radius: 2vh;
-    padding: 2vh;
+    padding: 1vh;
     width: 50vh;
+    color: white;
   }
 }

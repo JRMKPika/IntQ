@@ -15,26 +15,47 @@ function LoggedInContainer(props) {
   const { user } = props;
   const [selected, setSelected] = useState('home');
   const [data, setData] = useState('');
- 
-  function getData (link) {
+  const [dropdown, setDropdown] = useState(false);
+
+  function getData(link) {
     // GET request using fetch inside useEffect React hook
     fetch(link)
       .then((response) => response.json())
       .then((data) => setData(data));
-  };
-
+  }
 
   return (
     <div className='loggedInContainerWrapper'>
       <SearchBar />
-      <UserOptions username={user.name} />
-
+      <UserOptions
+        username={user.name}
+        dropdown={dropdown}
+        setDropdown={setDropdown}
+      />
+      {/* {dropdown ? (
+          <div className='dropdown'>
+            
+            <button onClick={() => ''}>Sign out</button>
+          </div>
+        ) : (
+          ''
+        )} */}
       <Router>
         <div>
           <Link to='/'>
             <button id='logo'>IntQ</button>
           </Link>
-
+          <div className='dropdown'>
+            <Link to='/myQuestions'>
+              {dropdown ? (
+                <div className='dropdown'>
+                  <button>My questions</button>
+                </div>
+              ) : (
+                ''
+              )}
+            </Link>
+          </div>
           <div id='AddOrSee'>
             <Link to='/AddQ'>
               <span>
@@ -55,7 +76,7 @@ function LoggedInContainer(props) {
               <SeeQ title='My Questions' data={data} />
             </Route>
             <Route path='/AddQ'>
-              <AddQ user={user}/>
+              <AddQ user={user} />
             </Route>
             <Route path='/'>
               <Homepage />
