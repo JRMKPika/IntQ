@@ -36,7 +36,7 @@ const Login = (props) => {
     <div className='loginWrapper'>
       <div className='loginSquare'>
         <h1 id='logo'>IntQ</h1>
-        <h2>The perfect place to keep track of your interview questions.</h2>
+        <span id='subtitle'>The perfect place to keep track of your interview questions.</span>
         <button id='start' onClick={()=> setStart(true)}> Start</button>
         {start ? <GoogleLogin
           clientId='32052476761-bgrijnll26kdtoi1mt522414bbe1f70r.apps.googleusercontent.com'

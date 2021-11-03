@@ -6,9 +6,9 @@ function SeeQ(props) {
   return (
     <div className='seeQWrapper'>
       <h1> {title}</h1>
-      <div className='questions'>
+      
       <Questions data={data} user={user}/>
-      </div>
+      
      
     </div>
   );
