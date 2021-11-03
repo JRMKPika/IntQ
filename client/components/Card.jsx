@@ -17,15 +17,20 @@ function Card(props) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: data.id }),
     }).catch((err) => console.log('Error while deleting question: ', err));
+    // let deletedNode = document.getElementById(data.id);
+    // let parent = document.getElementById('questionsWrapper');
+    // console.log(deletedNode);
+    // deletedNode.innerHTML = ''
   }
+  let timeDate = new Date(data.date);
 
   return (
     <div className='totalCard'>
       <div className='card'>
         <span id='highlight'>{data.question}</span>
         <h4>{data.role}</h4>
-        <h5>Type: {data.type}</h5>
-        <h6>{data.date}</h6>
+        <h5>{data.organization} - Type: {data.type}</h5>
+        <h6>{timeDate.toUTCString()}</h6>
       </div>
 
       {data.googleid === user.googleId ? (

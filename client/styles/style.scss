@@ -295,6 +295,10 @@ body {
       height: 3vh;
       color: $lilac;
       cursor: pointer;
+      :active {
+        color: black;
+      }
+      
     }
   }
   .searchOptions {
