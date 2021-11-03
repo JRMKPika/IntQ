@@ -30,7 +30,7 @@ function Card(props) {
         </h5>
       </div>
 
-      {data.googleId === user.googleId ? (
+      {data.googleid === user.googleid ? (
         <span
           onClick={() => {
             deleteQ;

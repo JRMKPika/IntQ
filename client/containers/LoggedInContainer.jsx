@@ -17,12 +17,28 @@ function LoggedInContainer(props) {
   const [data, setData] = useState('');
   const [dropdown, setDropdown] = useState(false);
   const [searchReq, setSearchReq] = useState([]);
-
+  console.log('this is user', user)
   function getData(link) {
     // GET request using fetch inside useEffect React hook
     fetch(link)
       .then((response) => response.json())
       .then((data) => setData(data));
+  }
+  function getMyData(link) {
+    // GET request using fetch inside useEffect React hook
+    fetch(link, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({googleId : user.googleId}) 
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data)
+        console.log(data)
+      }
+      );
   }
 
   return (
@@ -50,7 +66,7 @@ function LoggedInContainer(props) {
             </Link>
             <div className='seeQ'>
               <Link to='/SeeQ'>
-                <span onClick={getData('/allQ')}>
+                <span onClick={()=>getData('/allQ')}>
                   <FontAwesomeIcon id='seeIcon' icon={faListAlt} />
                 </span>
               </Link>
@@ -61,7 +77,7 @@ function LoggedInContainer(props) {
           <Link to='/myQuestions'>
             {dropdown ? (
               <div className='dropdown'>
-                <button>My questions</button>
+                <button onClick={()=>getMyData('/myQ')} >My questions</button>
               </div>
             ) : (
               <div></div>
