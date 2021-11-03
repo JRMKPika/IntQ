@@ -4,7 +4,7 @@
   "description": "",
   "main": "./client/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon server/server.js",
     "build": "NODE_ENV=production webpack & NODE_ENV=production npm run start",
     "dev": "NODE_ENV=development webpack serve --open & NODE_ENV=development npm run start"
@@ -63,6 +63,7 @@
     "sass": "^1.39.2",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
+    "supertest": "^6.1.6",
     "webpack": "^5.52.1",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0",
