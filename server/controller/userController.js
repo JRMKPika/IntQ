@@ -1,7 +1,5 @@
 const db = require('../model/userModel.js');
 
-// import pool from "../model/userModels.js";
-
 const userController = {};
 
 userController.signIn = async (req, res, next) => {
@@ -10,7 +8,6 @@ userController.signIn = async (req, res, next) => {
         const { googleId, name, email} = req.body;
         console.log("In the usercontroller.signIn method. Email :", email);
            
-        //retrieve all the rows in the databaser and check if the current googleId exists in the db.
         const idsFromDbQuery = `SELECT googleId FROM users where googleId = ${googleId}`;
 
         db.query(idsFromDbQuery)
@@ -21,7 +18,6 @@ userController.signIn = async (req, res, next) => {
                 res.locals.addedUser = googleId;
                 console.log("Google id is ", res.locals.addedUser);
                 return next();
-                // console.log('FROM THE IF : res.locals.addedUser: ',res.locals.addedUser)
                 }
             else{
                 const insertQuery = `INSERT INTO users VALUES (${googleId}, '${name}', '${email}');`;
@@ -31,7 +27,6 @@ userController.signIn = async (req, res, next) => {
                 console.log("User added to the SQL Database. Row count:  ", data.rowCount);
                 res.locals.addedUser = data.rowCount;
                 return next();
-                // console.log('FROM THE ELSE: res.locals.addedUser: ',res.locals.addedUser)
                 })
                 .catch(err => console.log("error while inserting to DB: ",err));
                 }
@@ -45,6 +40,34 @@ userController.signIn = async (req, res, next) => {
         };
         next(defaultErr);
       };
+}
+
+userController.AddQuestion = async (req, res, next) => {
+    try{
+    console.log("the req body is ",req.body);
+    const {question, company, questionTypes, role, googleId, username } = req.body;
+
+    const insertQuery = `INSERT INTO questions VALUES (DEFAULT,'${question}','${company}','${questionTypes}','${role}',CURRENT_DATE,${googleId})`;
+
+    db.query(insertQuery)
+    .then( (data) => {
+        if(data.rowCount ==1 ){
+            console.log("Added ",data.rowCount, " row");
+            res.locals.user = googleId;
+            return next();
+        }
+    })
+    .catch(err => console.log("error while inserting question to DB: ",err))
+
+}catch(err) {
+    const defaultErr = {
+        log: 'Error handler caught an error inside AddQuestion',
+        status: 500,
+        message: { err: 'An error occurred while adding the question' },
+      };
+      next(defaultErr);
+      }
+
 }
 
 module.exports = userController;
