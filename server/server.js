@@ -4,11 +4,43 @@ const app = express();
 const PORT = 3000;
 const routes = require('./routes')
 
+const userController = require('./controller/userController.js')
+
 app.use(express.urlencoded({extended: true}));
 
 app.use(express.json());
 
 app.use('/build', express.static(path.join(__dirname, '../build')));
+
+app.use("/build", express.static(path.join(__dirname, "../build")));
+
+app.get('/search/company/:searchText',
+userController.searchByCompany,
+(req, res) => {
+return res.status(200).json(res.locals.searchResults);
+});
+
+app.get('/search/role/:searchText',
+userController.searchByRole,
+(req, res) => {
+  return res.status(200).json(res.locals.searchResults);
+});
+
+app.get('/search/type/:searchText',
+userController.searchByType,
+(req, res) => {
+  return res.status(200).json(res.locals.searchResults);
+});
+
+app.post('/addQuestion',
+ userController.AddQuestion,
+  (req,res) => {});
+
+app.post(`/loginUser`,
+userController.signIn,
+(req, res) => {
+  res.status(200).json(res.locals.addedUser);
+});
 
 app.get('/', (req,res)=> {
   return res.status(200).sendFile(path.join(__dirname, "../client/index.html"));

@@ -11,19 +11,28 @@ import { faPlus, faListAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-function LoggedInContainer() {
-  // const { username } = props;
+function LoggedInContainer(props) {
+  const { user } = props;
   const [selected, setSelected] = useState('home');
-  let data = '';
+  const [data, setData] = useState('');
+ 
+  function getData (link) {
+    // GET request using fetch inside useEffect React hook
+    fetch(link)
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  };
+
+
   return (
     <div className='loggedInContainerWrapper'>
       <SearchBar />
-      <UserOptions username={'username'} />
+      <UserOptions username={user.name} />
 
       <Router>
         <div>
           <Link to='/'>
-            <span id='logo'>IntQ</span>
+            <button id='logo'>IntQ</button>
           </Link>
 
           <div id='AddOrSee'>
@@ -33,17 +42,20 @@ function LoggedInContainer() {
               </span>
             </Link>
             <Link to='/SeeQ'>
-              <span>
+              <span onClick={getData('/allQ')}>
                 <FontAwesomeIcon id='seeIcon' icon={faListAlt} />
               </span>
             </Link>
           </div>
           <Switch>
             <Route path='/SeeQ'>
-              <SeeQ title={'Questions'} data={data} />
+              <SeeQ title='All Questions' data={data} />
+            </Route>
+            <Route path='/myQuestions'>
+              <SeeQ title='My Questions' data={data} />
             </Route>
             <Route path='/AddQ'>
-              <AddQ />
+              <AddQ user={user}/>
             </Route>
             <Route path='/'>
               <Homepage />
