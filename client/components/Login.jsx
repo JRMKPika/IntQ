@@ -3,6 +3,7 @@ import { GoogleLogin } from 'react-google-login';
 
 const Login = (props) => {
   const { setLoggedIn, setUser } = props;
+  const [start, setStart] = useState(false);
 
   const LoginWithGoogle = (response) => {
     const name = response.profileObj.name;
@@ -34,13 +35,15 @@ const Login = (props) => {
     <div className='loginWrapper'>
       <div className='loginSquare'>
         <h1 id='logo'>IntQ</h1>
-        <GoogleLogin
+        <h2>The perfect place to keep track of your interview questions.</h2>
+        <button id='start' onClick={()=> setStart(true)}> Start</button>
+        {start ? <GoogleLogin
           clientId='32052476761-bgrijnll26kdtoi1mt522414bbe1f70r.apps.googleusercontent.com'
           buttonText='Login'
           onSuccess={LoginWithGoogle}
           onFailure={LoginWithGoogle}
           cookiePolicy={'single_host_origin'}
-        />
+        /> : ''}
       </div>
     </div>
   );
