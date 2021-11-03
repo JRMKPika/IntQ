@@ -5,32 +5,21 @@ import Card from './Card.jsx';
 
 function Homepage() {
   // fetch reqest to back end gets 10 newest questions
-  const [topTen, setTopTen] = useState({
-    data: [
-      {
-        question: 'what?',
-        type: 'algo',
-        role: 'frycook',
-        company: 'facebook',
-        username: 'rachel',
-        date: '11-11-11',
-        id: 1,
-      },
-    ],
-  });
-
+  const [topTen, setTopTen] = useState([]);
+  const { user } = props;
   useEffect(() => {
     // GET request using fetch inside useEffect React hook
     fetch('/newestTen')
       .then((response) => response.json())
-      .then((data) => setTopTen(data));
+      .then((data) => {
+      setTopTen(data)});
   }, []);
-
+  if (!topTen) return <div> </div>;
   return (
     <div>
       <h1>Latest Questions!</h1>
-      {topTen.data.map((d, index) => (
-        <Card key={d.id} data={d} delete={true} />
+      {topTen.map((el, index) => (
+        <Card key={index} data={el} user={user} />
       ))}
     </div>
   );
