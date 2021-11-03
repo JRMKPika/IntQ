@@ -9,6 +9,7 @@ body {
     color: $greyLogoColor;
     background-color: transparent;
     border: none;
+    cursor:pointer;
   }
   .loginWrapper {
     height: 100vh;
@@ -25,8 +26,11 @@ body {
       width: 100vh;
       height: 80vh;
       text-align: center;
-      border: 2px solid $lilac;
+      border: 2px solid $lightGrey;
       border-radius: 2vh;
+     #subtitle{
+      font-size: 3vh;
+     }
     }
     #start {
       font-family: $generalFont;
@@ -40,10 +44,11 @@ body {
       margin-top: 7vh;
       margin-bottom: 9vh;
       cursor: pointer;
+      font-size: 2vh;
     }
   }
   .loggedInContainerWrapper {
-    margin-top: 5vh;
+    margin-top: 2vh;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -82,11 +87,11 @@ body {
       }
       #plusIcon {
         font-size: 4vh;
-        color: $green;
+        color: $lilac;
       }
       #seeIcon {
         font-size: 4vh;
-        color: $green;
+        color: $lilac;
       }
     }
 
@@ -190,10 +195,12 @@ body {
         border: 1px solid $lilac;
         color: $greyColor;
         font-family: $generalFont;
+        padding-left:0.5vh;
       }
       ::placeholder {
         color: $greyColor;
         font-family: $generalFont;
+        padding-left:0.5vh;
       }
 
       button {
@@ -212,10 +219,26 @@ body {
         color: $greyColor;
         font-family: $generalFont;
         width: 14vh;
+        cursor: pointer;
+      }
+    }
+    .seeQWrapper {
+      width: 150vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .questionsWrapper {
+        margin-top: 5vh;
+        display: grid;
+        gap: 2vh;
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
     .userOptionsWrapper {
+      cursor: pointer;
       position: absolute;
       top: 3vh;
       right: 5vh;
@@ -234,21 +257,36 @@ body {
   }
   .totalCard {
     display: flex;
-    background-color: $lilac;
-    padding: 1vh;
-    color: $backgroundColor;
-    border-radius: 2vh;
+    background-color: $backgroundColor;
+    border: 1px solid $lightGrey;
+    padding: 4vh;
+    color: $greyColor;
+    border-radius: 10vh;
     .card {
       padding: 2vh;
       width: 40vh;
+
+      #highlight {
+        font-size: 3vh;
+        font-weight: 800;
+      }
+      h4{
+        font-size: 2vh;
+      }
+      h5{
+        font-size: 1.5vh;
+      }
+      h6{
+        font-size: 1.5vh;
+        color:$lilac;
+      }
     }
-    h3{
-      color:white;
-      font-weight: bolder;
-    }
+
     #exitIcon {
       width: 3vh;
       height: 3vh;
+      color: $lilac;
+      cursor: pointer;
     }
   }
   .searchOptions {
