@@ -17,7 +17,7 @@ function Card(props) {
       body: JSON.stringify({ id: data.id }),
     }).catch((err) => console.log('Error while deleting question: ', err));
   }
-
+ 
   return (
     <div className='totalCard'>
       <div className='card'>
@@ -29,18 +29,18 @@ function Card(props) {
           {data.username}--{data.date}
         </h5>
       </div>
-
-      {data.googleid === user.googleid ? (
+ 
+      {data.googleid === user.googleId ? (
         <span
           onClick={() => {
             deleteQ;
           }}
-        >
+        > 
           <FontAwesomeIcon id='exitIcon' icon={faWindowClose} />
         </span>
       ) : (
         ''
-      )}
+      )} 
     </div>
   );
 }
