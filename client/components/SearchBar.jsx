@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-function SearchBar() {
-  const [query, setQuery ] = useState([]);
+function SearchBar( params ) {
+
   function search() {
     const searchOption = document.querySelector('#searchOption').value;
     const searchText = document.querySelector('#searchText').value;
     fetch(`/search/${searchOption}/${searchText}`)
       .then((response) => response.json())
-      .then((data) => setQuery(data));
+      .then((data) => params.setQuery(data));
   }
 
   async function enterSearch() {

@@ -15,6 +15,7 @@ function LoggedInContainer(props) {
   const { user } = props;
   const [selected, setSelected] = useState('home');
   const [data, setData] = useState('');
+  const [query, setQuery ] = useState([]);
  
   function getData (link) {
     // GET request using fetch inside useEffect React hook
@@ -26,7 +27,7 @@ function LoggedInContainer(props) {
 
   return (
     <div className='loggedInContainerWrapper'>
-      <SearchBar />
+      <SearchBar setData={setData}/>
       <UserOptions username={user.name} />
 
       <Router>
@@ -34,7 +35,6 @@ function LoggedInContainer(props) {
           <Link to='/'>
             <button id='logo'>IntQ</button>
           </Link>
-
           <div id='AddOrSee'>
             <Link to='/AddQ'>
               <span>
@@ -59,6 +59,9 @@ function LoggedInContainer(props) {
             </Route>
             <Route path='/'>
               <Homepage />
+            </Route>
+            <Route path='/search'>
+              <SeeQ title='Searched Questions' data={data} />
             </Route>
           </Switch>
         </div>
