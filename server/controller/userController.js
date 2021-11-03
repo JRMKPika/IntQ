@@ -115,7 +115,7 @@ userController.AddQuestion = async (req, res, next) => {
     const { question, company, questionTypes, role, googleId, username } =
       req.body;
 
-    const insertQuery = `INSERT INTO questions VALUES (DEFAULT,'${question}','${company}','${questionTypes}','${role}',CURRENT_DATE,${googleId})`;
+    const insertQuery = `INSERT INTO questions VALUES (DEFAULT,'${question}','${company}','${questionTypes}','${role}',CURRENT_TIMESTAMP,${googleId})`;
 
     db.query(insertQuery)
       .then((data) => {
